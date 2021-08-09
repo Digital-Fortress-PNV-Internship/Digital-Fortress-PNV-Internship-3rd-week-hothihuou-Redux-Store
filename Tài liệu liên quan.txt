@@ -1,0 +1,6 @@
+Link học reactjs: https://reactjs.org/docs/context.html#gatsby-focus-wrapper
+Context:https://freetuts.net/context-trong-reactjs-2431.html
+Middleware:http://devguides.io/redux/middleware
+
+REdux devtools:https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd
+

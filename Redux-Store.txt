@@ -1,0 +1,76 @@
+Link tham khảo ok:https://www.youtube.com/watch?v=bZwMFYKeSGY&list=PLJ5qtRQovuEOoKffoCBzTfvzMTTORnoyp&index=31
+Link web:https://redux.js.org/tutorials/essentials/part-1-overview-concepts
+
+
+
+					REDUX STORE
+Link tham khao: https://www.youtube.com/watch?v=Sq_Qt8PWf_Y
+https://topdev.vn/blog/redux-la-gi/
+
+- Redux là gì? Kiến trúc của nó ra sao?
+-Khi nào cần sử dụng Redux?
+- Redux có phải chỉ để dùng với ReactJS hay không?
+- Code mẫu một ví dụ đơn giản sử dụng redux
+- Lưu ý
+
+
+1. Redux là gì? Kiến trúc của nó ra sao?
+
+- Redux is a predictable state container for JavaScript apps.
+- Thư viện js quản lý state, mà state này có thể dự đoán được. 
+- Sử dụng kiến trúc uni-directional data flow.
+
+* Kiến trúc
+
+Sơ đồ làm việc
+
+
+Store gồm có:
+State: là dữ liệu hiện tại được lưu trên state.  Reducer: là hàm biến đổi state cũ sang state mới.
+Dispatcher: quản lý middlewares và chuyển dữ liệu xuống reducer.
+Action = plain javascript object mô tả hành động.
+
+2. Khi nào cần sử dụng Redux?
+- Dữ liệu được sử dụng ở nhiều nơi
+- Có hỗ trợ chức năng undo/redo
+- Cần cache dữ liệu để tái sử dụng cho những lần sau.
+
+Lưu ý: Nếu app đang chạy tốt mà không có Redux, vậy có thể app đó không cần tới Redux.
+
+
+3. Redux có phải chỉ để dùng với ReactJS hay không?
+Không nhé bạn. Nó được sử dụng cho các javascript apps.  Vậy có thể là:
+ReactJS  Angular  VueJS
+Pure javascript App  Other javascript app
+
+
+
+4. Demo
+
+import { createStore } from 'redux'
+
+// Step 1: Define a reducer
+// A pure js function
+// that transform the old state to the new one
+// based on the action.type
+function counter(state = 0, action) {  switch (action.type) {
+case 'INCREMENT':
+return state + 1  case 'DECREMENT':
+return state - 1  default:
+return state
+}
+}
+
+// Step 2: Init your store with the reducer
+// Its API is { subscribe, dispatch, getState }.  let store = createStore(counter)
+
+// Step 3: Subscribe to state changes to update UI  store.subscribe(() => console.log(store.getState()))
+
+// Step 4: Dispatch action to update redux state
+// The only way to mutate the internal state is to dispatch an action.  store.dispatch({ type: 'INCREMENT' }) // 1
+store.dispatch({ type: 'INCREMENT' }) // 2  store.dispatch({ type: 'DECREMENT' }) // 1
+
+
+📝 Nhớ nè:
+Redux sử dụng kiến trúc 1 chiều: uni-directional data flow  Redux chỉ dùng 1 store duy nhất làm Single Source of Truth
+Redux state là READ-ONLY. Muốn update phải dispatch một action (js object)  Những thay đổi của redux state được thực hiện bởi Pure functions (reducer)  Redux có thể dùng cho các javascript apps, không chỉ riêng gì ReactJS.
